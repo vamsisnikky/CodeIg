@@ -51,6 +51,9 @@ class Welcome extends CI_Controller {
         {
             echo "Hello World";
         }
+        public function newusers(){
+            echo "welcome to new users";
+        }
 }
 
 /* End of file welcome.php */
