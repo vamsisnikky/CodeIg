@@ -31,6 +31,10 @@ class Welcome extends CI_Controller {
     public function contactus() {
     echo '# 2345 Gujrat' ;   
     }
+    
+    public function create(){
+        echo "new";
+    }
 
 }
 
