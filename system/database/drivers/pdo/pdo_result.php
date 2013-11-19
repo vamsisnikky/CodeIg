@@ -21,7 +21,11 @@
  * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
+<<<<<<< HEAD
  * @since		Version 1.0
+=======
+ * @since		Version 2.1.2
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -38,6 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_DB_pdo_result extends CI_DB_result {
 
+	public $num_rows;
+
 	/**
 	 * Number of rows in the result set
 	 *
@@ -46,6 +52,7 @@ class CI_DB_pdo_result extends CI_DB_result {
 	public function num_rows()
 	{
 		if (is_int($this->num_rows))
+<<<<<<< HEAD
 		{
 			return $this->num_rows;
 		}
@@ -63,6 +70,19 @@ class CI_DB_pdo_result extends CI_DB_result {
 		}
 
 		return $this->num_rows = count($this->result_array());
+=======
+		{
+			return $this->num_rows;
+		}
+		elseif (($this->num_rows = $this->result_id->rowCount()) > 0)
+		{
+			return $this->num_rows;
+		}
+
+		$this->num_rows = count($this->result_id->fetchAll());
+		$this->result_id->execute();
+		return $this->num_rows;
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	}
 
 	// --------------------------------------------------------------------

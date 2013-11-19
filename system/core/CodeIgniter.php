@@ -44,7 +44,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @var	string
  *
  */
+<<<<<<< HEAD
 	define('CI_VERSION', '3.0-dev');
+=======
+	define('CI_VERSION', '2.1.4');
+
+/**
+ * CodeIgniter Branch (Core = TRUE, Reactor = FALSE)
+ *
+ * @var boolean
+ *
+ */
+	define('CI_CORE', FALSE);
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 
 /*
  * ------------------------------------------------------

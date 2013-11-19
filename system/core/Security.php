@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 /**
  * CodeIgniter
  *
@@ -112,7 +116,11 @@ class CI_Security {
 	 *
 	 * @var	array
 	 */
+<<<<<<< HEAD
 	protected $_never_allowed_str =	array(
+=======
+	protected $_never_allowed_str = array(
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 		'document.cookie'	=> '[removed]',
 		'document.write'	=> '[removed]',
 		'.parentNode'		=> '[removed]',
@@ -139,7 +147,11 @@ class CI_Security {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Class constructor
+=======
+	 * Constructor
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	 *
 	 * @return	void
 	 */
@@ -185,8 +197,13 @@ class CI_Security {
 			return $this->csrf_set_cookie();
 		}
 
+<<<<<<< HEAD
 		// Check if URI has been whitelisted from CSRF checks
 		if ($exclude_uris = config_item('csrf_exclude_uris'))
+=======
+		// Do the tokens exist in both the _POST and _COOKIE arrays?
+		if ( ! isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name]))
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 		{
 			$uri = load_class('URI', 'core');
 			if (in_array($uri->uri_string(), $exclude_uris))
@@ -217,6 +234,10 @@ class CI_Security {
 		$this->csrf_set_cookie();
 
 		log_message('debug', 'CSRF token verified');
+<<<<<<< HEAD
+=======
+
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 		return $this;
 	}
 
@@ -233,7 +254,11 @@ class CI_Security {
 		$expire = time() + $this->_csrf_expire;
 		$secure_cookie = (bool) config_item('cookie_secure');
 
+<<<<<<< HEAD
 		if ($secure_cookie && ! is_https())
+=======
+		if ($secure_cookie && (empty($_SERVER['HTTPS']) OR strtolower($_SERVER['HTTPS']) === 'off'))
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 		{
 			return FALSE;
 		}
@@ -573,7 +598,43 @@ class CI_Security {
 	 */
 	public function sanitize_filename($str, $relative_path = FALSE)
 	{
+<<<<<<< HEAD
 		$bad = $this->filename_bad_chars;
+=======
+		$bad = array(
+			"../",
+			"<!--",
+			"-->",
+			"<",
+			">",
+			"'",
+			'"',
+			'&',
+			'$',
+			'#',
+			'{',
+			'}',
+			'[',
+			']',
+			'=',
+			';',
+			'?',
+			"%20",
+			"%22",
+			"%3c",		// <
+			"%253c",	// <
+			"%3e",		// >
+			"%0e",		// >
+			"%28",		// (
+			"%29",		// )
+			"%2528",	// (
+			"%26",		// &
+			"%24",		// $
+			"%3f",		// ?
+			"%3b",		// ;
+			"%3d"		// =
+		);
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 
 		if ( ! $relative_path)
 		{
@@ -685,8 +746,13 @@ class CI_Security {
 			{
 				$str = preg_replace('/(<?)(\/?[^><]+?)([^A-Za-z<>\-])(.*?)('.implode('|', $attribs).')(.*?)([\s><]?)([><]*)/i', '$1$2 $4$6$7$8', $str, -1, $count);
 			}
+<<<<<<< HEAD
 		}
 		while ($count);
+=======
+
+		} while ($count);
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 
 		return $str;
 	}
@@ -726,12 +792,24 @@ class CI_Security {
 	 */
 	protected function _js_link_removal($match)
 	{
+<<<<<<< HEAD
 		return str_replace($match[1],
 					preg_replace('#href=.*?(?:alert\(|alert&\#40;|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|data\s*:)#si',
 							'',
 							$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
 					),
 					$match[0]);
+=======
+		return str_replace(
+			$match[1],
+			preg_replace(
+				'#href=.*?(alert\(|alert&\#40;|javascript\:|livescript\:|mocha\:|charset\=|window\.|document\.|\.cookie|<script|<xss|data\s*:)#si',
+				'',
+				$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
+			),
+			$match[0]
+		);
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	}
 
 	// --------------------------------------------------------------------
@@ -751,12 +829,24 @@ class CI_Security {
 	 */
 	protected function _js_img_removal($match)
 	{
+<<<<<<< HEAD
 		return str_replace($match[1],
 					preg_replace('#src=.*?(?:alert\(|alert&\#40;|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|base64\s*,)#si',
 							'',
 							$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
 					),
 					$match[0]);
+=======
+		return str_replace(
+			$match[1],
+			preg_replace(
+				'#src=.*?(alert\(|alert&\#40;|javascript\:|livescript\:|mocha\:|charset\=|window\.|document\.|\.cookie|<script|<xss|base64\s*,)#si',
+				'',
+				$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
+			),
+			$match[0]
+		);
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	}
 
 	// --------------------------------------------------------------------

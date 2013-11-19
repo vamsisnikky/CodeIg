@@ -106,9 +106,17 @@ class CI_Config {
 		$file = ($file === '') ? 'config' : str_replace('.php', '', $file);
 		$found = $loaded = FALSE;
 
+		$check_locations = defined('ENVIRONMENT')
+			? array(ENVIRONMENT.'/'.$file, $file)
+			: array($file);
+
 		foreach ($this->_config_paths as $path)
 		{
+<<<<<<< HEAD
 			foreach (array(ENVIRONMENT.'/'.$file, $file) as $location)
+=======
+			foreach ($check_locations as $location)
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 			{
 				$file_path = $path.'config/'.$location.'.php';
 
@@ -288,6 +296,7 @@ class CI_Config {
 	 */
 	public function base_url($uri = '', $protocol = NULL)
 	{
+<<<<<<< HEAD
 		$base_url = $this->slash_item('base_url');
 
 		if (isset($protocol))
@@ -296,6 +305,9 @@ class CI_Config {
 		}
 
 		return $base_url.ltrim($this->_uri_string($uri), '/');
+=======
+		return $this->slash_item('base_url').ltrim($this->_uri_string($uri), '/');
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	}
 
 	// -------------------------------------------------------------

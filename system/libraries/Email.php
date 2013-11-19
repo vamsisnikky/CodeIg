@@ -2154,7 +2154,12 @@ class CI_Email {
 			$raw_data .= htmlspecialchars($this->_finalbody);
 		}
 
+<<<<<<< HEAD
 		return $msg.($raw_data === '' ? '' : '<pre>'.$raw_data.'</pre>');
+=======
+		$msg .= "<pre>".htmlspecialchars($this->_header_str)."\n".htmlspecialchars($this->_subject)."\n".htmlspecialchars($this->_finalbody).'</pre>';
+		return $msg;
+>>>>>>> db4f429fdbc3e3cdca53f5d9ab1daf5811c5ac19
 	}
 
 	// --------------------------------------------------------------------
